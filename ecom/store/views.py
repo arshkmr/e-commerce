@@ -8,12 +8,15 @@ from .forms import SignUpForm
 from django import forms
 
 
+def product(request, pk):
+    product = Product.objects.get(id=pk)
+    return render(request, 'product.html', {'product': product})
 
 
 # Create your views here.
-def home(reqeust):
+def home(request):
     products = Product.objects.all()
-    return render(reqeust, 'home.html', {'products': products})
+    return render(request, 'home.html', {'products': products})
 
 def about(request):
     return render(request, 'about.html', {})
